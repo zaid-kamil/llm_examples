@@ -1,0 +1,37 @@
+<style>
+    .htmx-indicator {
+        display: none;
+    }
+
+    .htmx-request {
+        display: block;
+    }
+
+    #my-spinner {
+        z-index: 1;
+        display: inline-block;
+    }
+
+    #spinner-img {
+
+        width: 1rem;
+        height: 1rem;
+    }
+
+    #spinner-img::selection {
+        background-color: rgba(0, 0, 0, 0);
+    }
+</style>
+<script src="https://unpkg.com/htmx.org@1.9.11"
+    integrity="sha384-0gxUXCCR8yv9FM2b+U3FDbsKthCI66oH5IA9fHppQq9DDMHuMauqq1ZHBpJxQ0J0"
+    crossorigin="anonymous"></script>
+<form hx-post="/chat" method="post" hx-target=".response" hx-indicator="#my-spinner">
+    <input type="text" name="message" placeholder="message">
+    <input type="submit" value="Send">
+    <div id="my-spinner" class="htmx-indicator">
+        <img id="spinner-img" src="https://www.drupal.org/files/issues/throbber_13.gif" />
+    </div>
+</form>
+<div class="area">
+    <p class="response"></p>
+</div>
